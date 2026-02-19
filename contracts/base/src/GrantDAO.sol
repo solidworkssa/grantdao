@@ -2,8 +2,11 @@
 pragma solidity ^0.8.20;
 
 /// @title GrantDAO Contract
+/// @author solidworkssa
 /// @notice DAO-based grant distribution system.
 contract GrantDAO {
+    string public constant VERSION = "1.0.0";
+
 
     struct Proposal {
         address recipient;
