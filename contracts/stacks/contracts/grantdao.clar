@@ -45,10 +45,10 @@
     (let
         (
             (p (unwrap! (map-get? proposals id) (err u404)))
-            (has-voted (default-to false (map-get? voted {proposal-id: id, voter: tx-sender})))
+            (has-voted (default-to false (map-get? voted {proposal-id: id, voter: contract-caller})))
         )
         (asserts! (not has-voted) (err u403))
-        (map-set voted {proposal-id: id, voter: tx-sender} true)
+        (map-set voted {proposal-id: id, voter: contract-caller} true)
         (map-set proposals id (merge p {votes: (+ (get votes p) u1)}))
         (ok true)
     )
